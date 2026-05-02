@@ -21,6 +21,8 @@ struct PrinterMonitorSnapshot
     std::string file;
 
     static PrinterMonitorSnapshot from_bambu_push_status(const nlohmann::json& payload);
+    static PrinterMonitorSnapshot from_moonraker_status(const nlohmann::json& result);
+    static PrinterMonitorSnapshot from_octoprint_job(const nlohmann::json& job);
 };
 
 }
