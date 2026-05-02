@@ -209,6 +209,18 @@ public:
     virtual int start_sdcard_print(PrintParams params, OnUpdateStatusFn update_fn, WasCancelledFn cancel_fn) = 0;
 
     // ========================================================================
+    // Live Monitoring (optional)
+    // ========================================================================
+    // Default no-op implementations keep backward compatibility for agents that
+    // don't support push status streaming.
+
+    // Starts live status streaming if supported by the agent.
+    virtual bool start_status_streaming() { return false; }
+
+    // Stops live status streaming if supported by the agent.
+    virtual void stop_status_streaming() {}
+
+    // ========================================================================
     // Callback Registration
     // ========================================================================
     /**

@@ -134,6 +134,8 @@ void NetworkAgent::set_printer_agent(std::shared_ptr<IPrinterAgent> printer_agen
     }
 
     apply_printer_callbacks(m_printer_agent, m_printer_callbacks);
+
+    m_printer_agent->start_status_streaming();
 }
 
 void* NetworkAgent::get_network_agent() { return BBLNetworkPlugin::instance().get_agent(); }
