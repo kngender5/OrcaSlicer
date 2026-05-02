@@ -72,6 +72,10 @@ public:
     FilamentSyncMode get_filament_sync_mode() const override { return FilamentSyncMode::pull; }
     bool fetch_filament_info(std::string dev_id) override;
 
+    // Live Monitoring
+    bool start_status_streaming() override;
+    void stop_status_streaming() override;
+
 protected:
     struct MoonrakerDeviceInfo
     {

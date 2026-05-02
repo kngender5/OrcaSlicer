@@ -596,6 +596,20 @@ bool MoonrakerPrinterAgent::fetch_filament_info(std::string dev_id)
     return false;
 }
 
+bool MoonrakerPrinterAgent::start_status_streaming()
+{
+    std::lock_guard<std::recursive_mutex> lock(state_mutex);
+    if (device_info.dev_id.empty() || device_info.base_url.empty())
+        return false;
+    start_status_stream(device_info.dev_id, device_info.base_url, device_info.api_key);
+    return true;
+}
+
+void MoonrakerPrinterAgent::stop_status_streaming()
+{
+    stop_status_stream();
+}
+
 std::string MoonrakerPrinterAgent::trim_and_upper(const std::string& input)
 {
     std::string result = input;
